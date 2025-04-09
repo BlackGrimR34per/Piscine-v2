@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/05 13:16:42 by yosherau          #+#    #+#             */
-/*   Updated: 2025/04/07 00:33:32 by yosherau         ###   ########.fr       */
+/*   Created: 2025/04/07 00:21:11 by yosherau          #+#    #+#             */
+/*   Updated: 2025/04/07 00:32:04 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,30 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	ft_print_comb(void)
+void	ft_print_comb2(void)
 {
-	char	x;
-	char	y;
-	char	z;
+	int	x;
+	int	y;
 
-	x = 47;
-	while (++x <= '7')
+	x = -1;
+	while (++x < 99)
 	{
 		y = x;
-		while (++y <= '8')
+		while (++y < 100)
 		{
-			z = y;
-			while (++z <= '9')
-			{
-				ft_putchar(x);
-				ft_putchar(y);
-				ft_putchar(z);
-				if (x != '7')
-					write(1, ", ", 2);
-			}
+			ft_putchar(x / 10 + '0');
+			ft_putchar(x % 10 + '0');
+			ft_putchar(' ');
+			ft_putchar(y / 10 + '0');
+			ft_putchar(y % 10 + '0');
+			if (x != 98)
+				write(1, ", ", 2);
 		}
 	}
 	ft_putchar('\n');
+}
+
+int	main(void)
+{
+	ft_print_comb2();
 }

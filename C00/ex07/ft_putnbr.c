@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/05 13:16:42 by yosherau          #+#    #+#             */
-/*   Updated: 2025/04/07 00:33:32 by yosherau         ###   ########.fr       */
+/*   Created: 2025/04/07 00:34:18 by yosherau          #+#    #+#             */
+/*   Updated: 2025/04/07 00:38:30 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,22 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	ft_print_comb(void)
+void	ft_putnbr(int nb)
 {
-	char	x;
-	char	y;
-	char	z;
+	long	nbr;
 
-	x = 47;
-	while (++x <= '7')
+	nbr = nb;
+	if (nbr < 0)
 	{
-		y = x;
-		while (++y <= '8')
-		{
-			z = y;
-			while (++z <= '9')
-			{
-				ft_putchar(x);
-				ft_putchar(y);
-				ft_putchar(z);
-				if (x != '7')
-					write(1, ", ", 2);
-			}
-		}
+		ft_putchar('-');
+		nbr *= -1;
 	}
-	ft_putchar('\n');
+	if (nbr >= 10)
+		ft_putnbr(nbr / 10);
+	ft_putchar(nbr % 10 + '0');
+}
+
+int	main(void)
+{
+	ft_putnbr(-2147483648);
 }
